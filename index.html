@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Sara</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #e0f7ff; /* baby blue off-white */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0a3d62; /* dark baby blue for text */
+    text-align: center;
+  }
+
+  .box {
+    background: #ffffff; /* white box */
+    padding: 30px;
+    border-radius: 25px;
+    max-width: 420px;
+    transition: all 0.8s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+
+  .box.active {
+    transform: translateY(-60px);
+    max-width: 600px;
+    padding: 50px;
+  }
+
+  h1 {
+    font-size: 26px;
+    color: #1e90ff; /* baby blue header */
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 12px 26px;
+    border-radius: 25px;
+    border: none;
+    background: #a2d5f2; /* soft baby blue */
+    color: #0a3d62;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    background: #81c7f5;
+  }
+
+  #message {
+    margin-top: 25px;
+    font-size: 19px;
+    line-height: 1.9;
+    min-height: 250px;
+    white-space: pre-line;
+  }
+</style>
+</head>
+<body>
+
+<div class="box" id="box">
+  <h1>I have a little secret to tell you, Sara...</h1>
+  <button id="revealBtn">Reveal Truth</button>
+  <div id="message"></div>
+</div>
+
+<script>
+(function() {
+  const text = `Sara,
+
+From the very beginning, it was always you.
+
+I don’t even know exactly when it started, but somewhere along the way, you became someone I couldn’t ignore. Someone I found myself thinking about constantly.
+
+Your eyes, your voice, your smile… everything about you is so enchanting.
+
+The first time I truly noticed you, I froze. You were breathtaking.
+
+The more I got to know you, the more I realized it wasn’t just how you look.. it was everything about you. The way you laugh, the way you talk, the way you exist… it’s all so perfect.
+
+Sara, I’ve liked you from the very start.
+
+And I still do, more than words can ever express.`;
+
+  let i = 0;
+  let started = false;
+
+  function typeWriter() {
+    if (i < text.length) {
+      let char = text.charAt(i);
+      document.getElementById("message").innerHTML += (char === "\n") ? "<br>" : char;
+      i++;
+      setTimeout(typeWriter, 50); // slower typing effect
+    }
+  }
+
+  const btn = document.getElementById("revealBtn");
+  btn.addEventListener("click", function() {
+    if (started) return;
+    started = true;
+
+    document.getElementById("box").classList.add("active");
+    setTimeout(typeWriter, 600);
+  });
+})();
+</script>
+
+</body>
+</html>
